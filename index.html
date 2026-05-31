@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sevgi Gökçe Kafalı | Research & Publications</title>
+    <!-- Tailwind CSS for styling without needing a separate CSS file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header / Hero Section -->
+    <header class="bg-white shadow-sm pt-16 pb-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <!-- Placeholder for Profile Picture -->
+            <img src="https://via.placeholder.com/150" alt="Dr. Sevgi Gökçe Kafalı" class="w-32 h-32 mx-auto rounded-full object-cover shadow-lg border-4 border-blue-50 mb-6">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Dr. Sevgi Gökçe Kafalı</h1>
+            <h2 class="text-xl text-blue-600 font-semibold mb-4">Postdoctoral Researcher & Alexander von Humboldt Fellow</h2>
+            
+            <div class="flex justify-center space-x-6 text-2xl text-gray-500 mt-6">
+                <a href="https://scholar.google.com/citations?user=tIZkbREAAAAJ&hl=tr" target="_blank" class="hover:text-blue-600 transition"><i class="fa-solid fa-graduation-cap"></i></a>
+                <a href="https://de.linkedin.com/in/sevgi-gokce-kafali" target="_blank" class="hover:text-blue-700 transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.researchgate.net/profile/Sevgi-Kafali" target="_blank" class="hover:text-green-500 transition"><i class="fab fa-researchgate"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        
+        <!-- About Section -->
+        <section class="mb-16 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h3 class="text-2xl font-bold border-b-2 border-blue-100 pb-2 mb-4 inline-block">About Me</h3>
+            <p class="text-gray-600 leading-relaxed text-lg">
+                I am a researcher specializing in artificial intelligence and medical informatics. Currently, I am honored to be an Alexander von Humboldt Fellow, conducting research at the <strong>Technical University of Munich (TUM)</strong> within the Institute for AI and Informatics in Medicine. My work focuses on bridging the gap between advanced computational methods and clinical applications, leveraging machine learning to solve complex problems in healthcare and medical imaging.
+            </p>
+            
+            <div class="mt-6 flex flex-wrap gap-4">
+                <a href="https://kiinformatik.mri.tum.de/de/team/sevgi-gokce_kafali" target="_blank" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition">TUM Profile</a>
+                <a href="https://www.humboldt-foundation.de/en/connect/explore-the-humboldt-network/singleview/1249636/dr-sevgi-gokce-kafali-tekat" target="_blank" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition">Humboldt Network</a>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section>
+            <h3 class="text-2xl font-bold border-b-2 border-blue-100 pb-2 mb-6 inline-block">Selected Publications</h3>
+            <!-- The JavaScript below will inject the publications into this div -->
+            <div id="publications-container" class="space-y-6"></div>
+            
+            <div class="mt-8 text-center">
+                <a href="https://scholar.google.com/citations?user=tIZkbREAAAAJ&hl=tr" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition shadow-md">
+                    View full profile on Google Scholar
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 text-center py-8 mt-12">
+        <p>&copy; <span id="year"></span> Dr. Sevgi Gökçe Kafalı. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to handle publications and dynamic dates -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Easily update publications here. Add or remove items from this list.
+        const publications = [
+            {
+                title: "Example Publication Title: AI in Medical Informatics",
+                authors: "Kafali, S. G., et al.",
+                journal: "Journal of Medical Artificial Intelligence",
+                year: "2025",
+                link: "https://scholar.google.com/citations?user=tIZkbREAAAAJ&hl=tr"
+            },
+            {
+                title: "Another Important Paper on Machine Learning",
+                authors: "Smith, J., Kafali, S. G., Doe, J.",
+                journal: "IEEE Transactions on Medical Imaging",
+                year: "2024",
+                link: "https://scholar.google.com/citations?user=tIZkbREAAAAJ&hl=tr"
+            },
+            {
+                title: "Previous highly cited research work",
+                authors: "Kafali, S. G., et al.",
+                journal: "Nature Digital Medicine",
+                year: "2023",
+                link: "https://scholar.google.com/citations?user=tIZkbREAAAAJ&hl=tr"
+            }
+        ];
+
+        const container = document.getElementById('publications-container');
+
+        publications.forEach(pub => {
+            const pubCard = document.createElement('div');
+            pubCard.className = "bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition";
+            pubCard.innerHTML = `
+                <h4 class="text-lg font-bold text-gray-900 mb-1">
+                    <a href="${pub.link}" target="_blank" class="hover:text-blue-600">${pub.title}</a>
+                </h4>
+                <p class="text-gray-700 mb-2">${pub.authors}</p>
+                <p class="text-sm text-gray-500 font-medium"><em>${pub.journal}</em> • ${pub.year}</p>
+            `;
+            container.appendChild(pubCard);
+        });
+    </script>
+</body>
+</html>
