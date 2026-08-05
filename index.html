@@ -52,6 +52,11 @@
     .about-copy p { margin:0 0 20px; }
     .interests { display:flex; flex-wrap:wrap; gap:9px; margin-top:32px; }
     .tag { padding:9px 11px; border:1px solid var(--line); background:white; font:500 10px/1.15 "DM Mono", monospace; color:#425148; }
+    .research-areas { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:28px; border-top:1px solid var(--line); border-left:1px solid var(--line); }
+    .research-area { min-height:168px; padding:20px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fbfbf7; }
+    .research-area h3 { margin:0 0 11px; color:var(--green); font:500 10px/1.4 "DM Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    .research-area p { margin:0; color:#4e5a54; font-size:13px; line-height:1.6; }
+    .profile-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:25px; }
     .research { padding-top:145px; }
     .pubs { border-top:1px solid var(--line); }
     .pub { display:grid; grid-template-columns:72px minmax(0,1.5fr) minmax(150px,.62fr) 25px; gap:24px; align-items:start; padding:30px 0; border-bottom:1px solid var(--line); transition:.2s ease; }
@@ -64,7 +69,7 @@
     .pub-link:hover { background:var(--green); color:white; border-color:var(--green); }
     .all-work { margin-top:28px; }
     footer { max-width:1240px; margin:auto; padding:25px 34px 32px; display:flex; justify-content:space-between; color:var(--muted); font:500 10px/1 "DM Mono", monospace; }
-    @media (max-width:720px) { .site-header { padding:13px 22px; align-items:flex-start; gap:12px; } .wordmark { padding-top:9px; white-space:nowrap; font-size:11px; } .nav { gap:4px; } .nav a { padding:8px 7px; font-size:9px; } .hero { grid-template-columns:1fr; padding:22px 22px 64px; gap:45px; } .portrait-wrap { max-width:100%; width:min(86%,420px); } .portrait-note { right:-21px; } h1 { white-space:normal; font-size:clamp(2.7rem,12vw,3.4rem); } .facts-inner { padding:0 22px; grid-template-columns:1fr; } .fact { min-height:auto; padding:23px 0; border-right:0; border-bottom:1px solid var(--line); } .fact + .fact { padding-left:0; } .fact:last-child { border-bottom:0; } main { padding:76px 22px 0; } .section-heading, .about-grid { grid-template-columns:1fr; gap:22px; } .research { padding-top:90px; } .pub { grid-template-columns:55px 1fr 25px; gap:13px; } .pub-venue { grid-column:2; } footer { padding:22px; } }
+    @media (max-width:720px) { .site-header { padding:13px 22px; align-items:flex-start; gap:12px; } .wordmark { padding-top:9px; white-space:nowrap; font-size:11px; } .nav { gap:4px; } .nav a { padding:8px 7px; font-size:9px; } .hero { grid-template-columns:1fr; padding:22px 22px 64px; gap:45px; } .portrait-wrap { max-width:100%; width:min(86%,420px); } .portrait-note { right:-21px; } h1 { white-space:normal; font-size:clamp(2.7rem,12vw,3.4rem); } .facts-inner { padding:0 22px; grid-template-columns:1fr; } .fact { min-height:auto; padding:23px 0; border-right:0; border-bottom:1px solid var(--line); } .fact + .fact { padding-left:0; } .fact:last-child { border-bottom:0; } main { padding:76px 22px 0; } .section-heading, .about-grid { grid-template-columns:1fr; gap:22px; } .research-areas { grid-template-columns:1fr; } .research { padding-top:90px; } .pub { grid-template-columns:55px 1fr 25px; gap:13px; } .pub-venue { grid-column:2; } footer { padding:22px; } }
   </style>
 </head>
 <body>
@@ -109,6 +114,15 @@
           <p>I am an Alexander von Humboldt postdoctoral fellow at the Institute of Artificial Intelligence and Informatics in Medicine at the Technical University of Munich. My research focuses on magnetic resonance imaging, particularly deep-learning-based super-resolution and image reconstruction with motion correction.</p>
           <p>I am interested in translating advanced computational methods into imaging tools with real clinical value, including applications in liver and cardiac imaging. Previously, I earned my MS and PhD in Bioengineering and Biomedical Engineering at UCLA, where I worked on abdominal adipose-tissue segmentation and free-breathing liver MR elastography in children.</p>
           <div class="interests"><span class="tag">MRI reconstruction</span><span class="tag">MRI super-resolution</span><span class="tag">Image segmentation</span><span class="tag">Medical AI</span></div>
+          <div class="research-areas" aria-label="Research interests">
+            <article class="research-area"><h3>MR reconstruction</h3><p>Deep-learning-based image reconstruction with motion correction for robust, high-quality MRI.</p></article>
+            <article class="research-area"><h3>MR super-resolution</h3><p>Computational methods that enhance image resolution while preserving clinically relevant detail.</p></article>
+            <article class="research-area"><h3>Image analysis</h3><p>Segmentation and quantitative analysis for liver and cardiac imaging applications.</p></article>
+          </div>
+          <div class="profile-links">
+            <a class="button" href="https://kiinformatik.mri.tum.de/de/team/sevgi-gokce_kafali" target="_blank" rel="noopener">TUM profile <span class="arrow">↗</span></a>
+            <a class="button" href="https://www.humboldt-foundation.de/en/connect/explore-the-humboldt-network/singleview/1249636/dr-sevgi-gokce-kafali-tekat" target="_blank" rel="noopener">Humboldt network <span class="arrow">↗</span></a>
+          </div>
         </div>
       </div>
     </section>
