@@ -19,7 +19,7 @@
     .wordmark span { color:var(--green); }
     .nav { display:flex; gap:7px; font:500 11px/1 "DM Mono", monospace; color:var(--muted); }
     .nav a { padding:9px 11px; border:1px solid var(--line); background:rgba(255,255,255,.45); transition:.2s ease; }
-    .nav a:hover { color:white; background:var(--green); border-color:var(--green); transform:translateY(-1px); }
+    .nav a:hover, .nav a.active { color:white; background:var(--green); border-color:var(--green); transform:translateY(-1px); }
     .hero { max-width:1240px; margin:20px auto 0; padding:36px 34px 92px; display:grid; grid-template-columns:minmax(280px,.75fr) minmax(420px,1.25fr); gap:clamp(46px,8vw,130px); align-items:center; }
     .portrait-wrap { position:relative; max-width:420px; }
     .portrait { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center; filter:saturate(.86); }
@@ -70,7 +70,7 @@
 <body>
   <header class="site-header">
     <a class="wordmark" href="#top">SEVGI <span>GOKCE</span> KAFALI</a>
-    <nav class="nav" aria-label="Main navigation"><a href="#about">About</a><a href="#news">News</a><a href="#research">Publications</a></nav>
+    <nav class="nav" aria-label="Main navigation"><a href="#about">About</a><a href="#education">Education</a><a href="#news">News</a><a href="#research">Publications</a></nav>
   </header>
 
   <section class="hero" id="top">
@@ -113,8 +113,18 @@
       </div>
     </section>
 
+    <section class="research" id="education">
+      <div class="section-heading"><div class="section-number">02 / EDUCATION</div><h2>Education and training.</h2></div>
+      <div class="pubs">
+        <article class="pub"><div class="pub-year">2024</div><div><h3 class="pub-title">PhD in Bioengineering and Biomedical Engineering</h3></div><p class="pub-venue">University of California, Los Angeles</p><span aria-hidden="true"></span></article>
+        <article class="pub"><div class="pub-year">2020</div><div><h3 class="pub-title">MS in Bioengineering and Biomedical Engineering</h3></div><p class="pub-venue">University of California, Los Angeles</p><span aria-hidden="true"></span></article>
+        <article class="pub"><div class="pub-year">2018</div><div><h3 class="pub-title">MS in Electrical and Electronics Engineering</h3></div><p class="pub-venue">Bilkent University</p><span aria-hidden="true"></span></article>
+        <article class="pub"><div class="pub-year">2015</div><div><h3 class="pub-title">BS in Electrical and Electronics Engineering</h3></div><p class="pub-venue">Bilkent University</p><span aria-hidden="true"></span></article>
+      </div>
+    </section>
+
     <section class="research" id="news">
-      <div class="section-heading"><div class="section-number">02 / NEWS</div><h2>Recent academic updates.</h2></div>
+      <div class="section-heading"><div class="section-number">03 / NEWS</div><h2>Recent academic updates.</h2></div>
       <div class="pubs">
         <article class="pub"><div class="pub-year">2026</div><div><h3 class="pub-title">New publication accepted at an international medical imaging conference</h3><p class="pub-authors">Details to be announced.</p></div><p class="pub-venue">Research update</p><span aria-hidden="true"></span></article>
         <article class="pub"><div class="pub-year">2025</div><div><h3 class="pub-title">Awarded an Alexander von Humboldt postdoctoral fellowship</h3><p class="pub-authors">Institute of Artificial Intelligence and Informatics in Medicine, Technical University of Munich.</p></div><p class="pub-venue">Fellowship</p><span aria-hidden="true"></span></article>
@@ -123,9 +133,7 @@
     </section>
 
     <section class="research" id="research">
-      <div class="pubs">
-      <div class="section-heading"><div class="section-number">03 / SELECTED PUBLICATIONS</div><h2>Selected publications in magnetic resonance imaging and machine learning.</h2></div>
-      <div class="pubs">
+      <div class="section-heading"><div class="section-number">04 / SELECTED PUBLICATIONS</div><h2>Selected publications in magnetic resonance imaging and machine learning.</h2></div>
       <div class="pubs">
         <article class="pub"><div class="pub-year">2026</div><div><h3 class="pub-title">Cross-Cohort Federated Learning for Pediatric Abdominal Adipose Tissue Segmentation and Quantification Using Free-Breathing 3D MRI</h3><p class="pub-authors">W. Zhang, S. G. Kafali, T. Adamos, K. Kuwahara, et al.</p></div><p class="pub-venue">Radiology Advances</p><a class="pub-link" href="https://doi.org/10.1093/radadv/umag002" target="_blank" rel="noopener" aria-label="Open publication">↗</a></article>
         <article class="pub"><div class="pub-year">2024</div><div><h3 class="pub-title">Self-Gated Radial Free-Breathing Liver MR Elastography: Assessment of Technical Performance in Children at 3 T</h3><p class="pub-authors">S. G. Kafali, B. D. Bolster Jr, S.-F. Shih, T. I. Delgado, et al.</p></div><p class="pub-venue">Journal of Magnetic Resonance Imaging</p><a class="pub-link" href="https://doi.org/10.1002/jmri.29541" target="_blank" rel="noopener" aria-label="Open publication">↗</a></article>
@@ -137,6 +145,32 @@
 
   </main>
   <footer><span>© <span id="year"></span> Sevgi Gokce Kafali</span><span>Munich, Germany</span></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const sectionLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
+    const linkedSections = sectionLinks
+      .map(link => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+      .filter(item => item.section);
+
+    const setActiveSection = id => {
+      linkedSections.forEach(({ link, section }) => {
+        const active = section.id === id;
+        link.classList.toggle('active', active);
+        active ? link.setAttribute('aria-current', 'location') : link.removeAttribute('aria-current');
+      });
+    };
+
+    const updateActiveSection = () => {
+      const marker = window.innerHeight * .5;
+      const current = linkedSections.reduce((active, item) =>
+        item.section.getBoundingClientRect().top <= marker ? item : active, linkedSections[0]);
+      setActiveSection(current.section.id);
+    };
+
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+    updateActiveSection();
+  </script>
 </body>
 </html>
