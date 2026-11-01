@@ -20,6 +20,8 @@
     .nav { display:flex; gap:8px; font:500 14px/1 "DM Mono", monospace; color:var(--muted); }
     .nav a { padding:11px 13px; border:1px solid var(--line); background:rgba(255,255,255,.45); transition:.2s ease; }
     .nav a:hover, .nav a.active { color:white; background:var(--green); border-color:var(--green); transform:translateY(-1px); }
+    .nav a.external { color:var(--green); border-color:var(--green); }
+    .nav a.external:hover { color:white; }
     .hero { max-width:1240px; margin:20px auto 0; padding:36px 34px 92px; display:grid; grid-template-columns:minmax(240px,.7fr) minmax(420px,1.3fr); gap:clamp(46px,8vw,130px); align-items:center; }
     .portrait-wrap { position:relative; max-width:350px; }
     .portrait { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center; filter:saturate(.86); }
@@ -58,6 +60,9 @@
     .research-area p { margin:0; color:#4e5a54; font-size:13px; line-height:1.6; }
     .profile-links { display:flex; flex-wrap:wrap; gap:12px; margin-top:25px; }
     .profile-links .button { font-size:14px; padding:15px 18px; }
+    .project-note { margin-top:42px; padding:24px; border:1px solid var(--line); background:#eff2ed; }
+    .project-note h3 { margin:0 0 10px; font:600 21px/1.25 Fraunces, Georgia, serif; }
+    .project-note p { margin:0 0 18px; color:#4e5a54; font-size:14px; line-height:1.6; letter-spacing:0; }
     .research { padding-top:145px; }
     .pubs { border-top:1px solid var(--line); }
     .pub { display:grid; grid-template-columns:72px minmax(0,1.5fr) minmax(150px,.62fr) 25px; gap:24px; align-items:start; padding:30px 0; border-bottom:1px solid var(--line); transition:.2s ease; }
@@ -71,13 +76,14 @@
     .pub-link:hover { background:var(--green); color:white; border-color:var(--green); }
     .all-work { margin-top:28px; }
     footer { max-width:1240px; margin:auto; padding:25px 34px 32px; display:flex; justify-content:space-between; color:var(--muted); font:500 10px/1 "DM Mono", monospace; }
-    @media (max-width:720px) { .site-header { padding:13px 22px; align-items:flex-start; gap:12px; } .wordmark { padding-top:11px; white-space:nowrap; font-size:11px; } .nav { gap:4px; font-size:10px; } .nav a { padding:9px 7px; } .hero { grid-template-columns:1fr; padding:22px 22px 64px; gap:45px; } .portrait-wrap { max-width:100%; width:min(76%,350px); } .portrait-note { right:-21px; } h1 { white-space:normal; font-size:clamp(1.9rem,9vw,2.9rem); } .facts-inner { padding:0 22px; grid-template-columns:1fr; } .fact { min-height:auto; padding:23px 0; border-right:0; border-bottom:1px solid var(--line); } .fact + .fact { padding-left:0; } .fact:last-child { border-bottom:0; } main { padding:76px 22px 0; } .section-heading, .about-grid { grid-template-columns:1fr; gap:22px; } .research-areas { grid-template-columns:1fr; } .research { padding-top:90px; } .pub { grid-template-columns:55px 1fr 25px; gap:13px; } .pub-venue { grid-column:2; } footer { padding:22px; } }
+    @media (max-width:720px) { .site-header { padding:13px 22px; flex-wrap:wrap; align-items:flex-start; gap:12px; } .wordmark { white-space:nowrap; font-size:11px; } .nav { width:100%; gap:4px; font-size:10px; } .nav a { padding:9px 7px; } .hero { grid-template-columns:1fr; padding:22px 22px 64px; gap:45px; } .portrait-wrap { max-width:100%; width:min(76%,350px); } .portrait-note { right:-21px; } h1 { white-space:normal; font-size:clamp(1.9rem,9vw,2.9rem); } .facts-inner { padding:0 22px; grid-template-columns:1fr; } .fact { min-height:auto; padding:23px 0; border-right:0; border-bottom:1px solid var(--line); } .fact + .fact { padding-left:0; } .fact:last-child { border-bottom:0; } main { padding:76px 22px 0; } .section-heading, .about-grid { grid-template-columns:1fr; gap:22px; } .research-areas { grid-template-columns:1fr; } .research { padding-top:90px; } .pub { grid-template-columns:55px 1fr 25px; gap:13px; } .pub-venue { grid-column:2; } footer { padding:22px; } }
+    @media (max-width:380px) { .nav { font-size:9px; } .nav a { padding:8px 6px; } }
   </style>
 </head>
 <body>
   <header class="site-header">
     <a class="wordmark" href="#top">SEVGI <span>GOKCE</span> KAFALI</a>
-    <nav class="nav" aria-label="Main navigation"><a href="#about">About</a><a href="#education">Education</a><a href="#news">News</a><a href="#research">Publications</a></nav>
+    <nav class="nav" aria-label="Main navigation"><a href="#about">About</a><a href="#education">Education</a><a href="#news">News</a><a href="#research">Publications</a><a class="external" href="https://qr.sgkafali.com/" target="_blank" rel="noopener noreferrer" aria-label="QR Studio (opens in a new tab)">QR Studio ↗</a></nav>
   </header>
 
   <section class="hero" id="top">
@@ -124,6 +130,11 @@
             <a class="button" href="https://kiinformatik.mri.tum.de/de/team/sevgi-gokce_kafali" target="_blank" rel="noopener">TUM profile <span class="arrow">↗</span></a>
             <a class="button" href="https://www.humboldt-foundation.de/en/connect/explore-the-humboldt-network/singleview/1249636/dr-sevgi-gokce-kafali-tekat" target="_blank" rel="noopener">Humboldt network <span class="arrow">↗</span></a>
           </div>
+          <aside class="project-note" aria-label="Independent project">
+            <h3>QR Studio</h3>
+            <p>Frustrated by ads and paywalls when making QR codes for research posters, I built a free QR generator with optional link management and analytics.</p>
+            <a class="button" href="https://qr.sgkafali.com/" target="_blank" rel="noopener noreferrer">Open QR Studio <span class="arrow">↗</span></a>
+          </aside>
         </div>
       </div>
     </section>
